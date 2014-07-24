@@ -1,0 +1,19 @@
+{
+  "name": "system-locale",
+  "version": "0.0.0",
+  "description": "System locale information",
+  "main": "lib/system-locale",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/execjosh/node-system-locale.git"
+  },
+  "keywords": [
+    "locale"
+  ],
+  "author": "execjosh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/execjosh/node-system-locale/issues"
+  },
+  "homepage": "https://github.com/execjosh/node-system-locale"
+}
