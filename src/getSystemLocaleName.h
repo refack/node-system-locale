@@ -3,7 +3,7 @@
 
 #include <node.h>
 
-#if V8_IS_PRE_3_20
+#if (NODE_MODULE_VERSION <= 11)
 v8::Handle<v8::Value> GetSystemLocaleName(const v8::Arguments &args);
 #else
 void GetSystemLocaleName(const v8::FunctionCallbackInfo<v8::Value> &args);
