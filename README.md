@@ -12,7 +12,7 @@ There is only one (read-only) property, `name`.
 console.log(JSON.stringify(systemLocale.name, null, 2))
 ```
 
-```json
+```
 $ locale
 LANG="ja_JP.UTF-8"
 LC_COLLATE="ja_JP.UTF-8"
@@ -37,5 +37,5 @@ $ node examples/simple.js
 
 # Notes
 
- *  Manually tested (i.e., executed examples) with node `v0.10.{5,12,26}` and
+ *  Manually tested (i.e., executed example) with node `v0.10.{5,12,26}` and
     `v0.11.13`.
