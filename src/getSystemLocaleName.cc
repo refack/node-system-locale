@@ -5,7 +5,7 @@
 
 using namespace v8;
 
-#if V8_IS_PRE_3_20
+#if (NODE_MODULE_VERSION <= 11)
 Handle<Value> GetSystemLocaleName(const Arguments &args) {
   HandleScope scope;
 #else
@@ -26,13 +26,13 @@ void GetSystemLocaleName(const FunctionCallbackInfo<Value> &args) {
   }
 
   if ((const char *)NULL == systemLocaleName) {
-#if V8_IS_PRE_3_20
+#if (NODE_MODULE_VERSION <= 11)
     return scope.Close(Undefined());
 #else
     args.GetReturnValue().SetUndefined();
 #endif
   } else {
-#if V8_IS_PRE_3_20
+#if (NODE_MODULE_VERSION <= 11)
     return scope.Close(Local<Value>::New(String::New(systemLocaleName)));
 #else
     args.GetReturnValue().Set(String::NewFromUtf8(isolate, systemLocaleName));

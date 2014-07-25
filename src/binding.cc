@@ -5,7 +5,7 @@
 using namespace v8;
 
 void init(Handle<Object> exports, Handle<Object> module) {
-#if V8_IS_PRE_3_20
+#if (NODE_MODULE_VERSION <= 11)
   module->Set(String::NewSymbol("exports"),
       FunctionTemplate::New(GetSystemLocaleName)->GetFunction());
 #else
