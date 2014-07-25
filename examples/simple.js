@@ -1,5 +1,3 @@
 var systemLocale = require('../')
 
-systemLocale.name(function(err, val) {
-  console.log(val)
-})
+console.log(JSON.stringify(systemLocale.name, null, 2))
