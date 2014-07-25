@@ -5,9 +5,14 @@
 
 using namespace v8;
 
-void GetSystemLocaleName(const FunctionCallbackInfo<Value> &info) {
+#if V8_IS_PRE_3_20
+Handle<Value> GetSystemLocaleName(const Arguments &args) {
+  HandleScope scope;
+#else
+void GetSystemLocaleName(const FunctionCallbackInfo<Value> &args) {
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
+#endif
 
   // Save current locale name
   const char *originalLocaleName = std::setlocale(LC_ALL, NULL);
@@ -21,8 +26,16 @@ void GetSystemLocaleName(const FunctionCallbackInfo<Value> &info) {
   }
 
   if ((const char *)NULL == systemLocaleName) {
-    info.GetReturnValue().SetUndefined();
+#if V8_IS_PRE_3_20
+    return scope.Close(Undefined());
+#else
+    args.GetReturnValue().SetUndefined();
+#endif
   } else {
-    info.GetReturnValue().Set(String::NewFromUtf8(isolate, systemLocaleName));
+#if V8_IS_PRE_3_20
+    return scope.Close(Local<Value>::New(String::New(systemLocaleName)));
+#else
+    args.GetReturnValue().Set(String::NewFromUtf8(isolate, systemLocaleName));
+#endif
   }
 }

@@ -3,6 +3,10 @@
 
 #include <node.h>
 
-void GetSystemLocaleName(const v8::FunctionCallbackInfo<v8::Value> &info);
+#if V8_IS_PRE_3_20
+v8::Handle<v8::Value> GetSystemLocaleName(const v8::Arguments &args);
+#else
+void GetSystemLocaleName(const v8::FunctionCallbackInfo<v8::Value> &args);
+#endif
 
 #endif//__GET_SYSTEM_LOCALE_NAME_H__
